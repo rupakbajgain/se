@@ -1,0 +1,2 @@
+assets/configs/** filter=git-crypt diff=git-crypt
+assets/docs/** filter=git-crypt diff=git-crypt
