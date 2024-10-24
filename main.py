@@ -1,4 +1,4 @@
-#!./venv/bin/python3
+#!./env/bin/python3
 import os,sys
 import shutil
 import click

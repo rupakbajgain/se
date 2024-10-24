@@ -1,0 +1,11 @@
+pip
+click_default_group
+requests
+bs4
+scholarly
+validators
+langchain
+langchain_community
+langchain_unstructured
+flask
+waitress

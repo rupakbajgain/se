@@ -1,6 +1,5 @@
 import requests
 import logging
-from playwright.sync_api import sync_playwright
 import hashlib,os
 from ...config import getConfig
 
@@ -15,6 +14,7 @@ def start_browser():
         return
     logging.debug("Starting playwright browser")
     if not playwright:
+        from playwright.sync_api import sync_playwright
         playwright = sync_playwright().start()
     chromium = playwright.chromium
     browser = chromium.launch(channel="chrome")
