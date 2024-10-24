@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to the AutoMail</h1>
+<p>An app to create and send automated emails to professors</p>
+
+<a href="{{ url_for('userinfo') }}" class="btn btn-primary">Start</a>
+<p class="text-muted small fst-italic">
+    Start here.<br/>
+    This style of text is hint text.<br/>
+    If you are just trying out just put random datas.<br/>
+    You can skip most fields as they are optional.<br/>
+    Input values and continue clicking continue.
+</p>
+
+<!-- New suggestion box -->
+<div class="mt-4">
+    <h3>Suggestions</h3>
+    <form action="{{ url_for('submit_suggestion') }}" method="POST">
+        <div class="mb-3">
+            <textarea class="form-control" name="suggestion" rows="3" placeholder="Your suggestions are welcome. Please enter them here."></textarea>
+        </div>
+        <button type="submit" class="btn btn-secondary">Submit Suggestion</button>
+    </form>
+</div>
+
+<br/><br/>
+<a href="{{ url_for('logout') }}" class="btn btn-danger">Clear All</a>
+
+<br/><br/>
+<a href="{{ url_for('clearprof') }}" class="btn btn-danger">Clear Professor Infos</a>
+{% endblock %}

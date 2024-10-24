@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Download professor data</h1>
+<br/>
+<h2>Log of Actions</h2>
+<div id="action-log" class="mb-4" style="height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+    <p class="text-muted">{{actions_log|safe}}</p>
+</div>
+<a href="{{ url_for('email') }}" class="btn btn-primary">Continue</a>
+<br/>
+<p class="text-muted small fst-italic">
+    Click <br/>
+     1. Download from Google Scholar<br/>
+     2. Download from Profile Page<br/><br/>
+    Download from Profile Page with Single Page Only: it only gets one page but provides all the data for general mail.<br/>
+    * These portions are seperate so it can be used multiple times with corrections.
+</p>
+<script>
+    // Scroll the action log to the bottom
+    var actionLog = document.getElementById('action-log');
+    actionLog.scrollTop = actionLog.scrollHeight;
+</script>
+
+<br/>
+<h2>Download from Google Scholar</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="scholar_email" class="form-label">Professor's Email</label>
+        <input type="email" class="form-control" id="scholar_email" name="scholar_email" value="{{ session.get('prof_email', '') }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Download from Scholar</button>
+</form>
+<br/>
+<h2>Download from Profile Page</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="profile_url" class="form-label">Professor's Profile URL</label>
+        <input type="url" class="form-control" id="profile_url" name="profile_url" value="{{ session.get('prof_profile', '') }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Download from Profile</button>
+    <button type="submit" class="btn btn-secondary" name="single_page" value="true">Download Single Page Only</button>
+</form>
+
+{% endblock %}

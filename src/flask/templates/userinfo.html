@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>User Information</h1>
+<br/>
+<h2>Basic User Information</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="username" class="form-label">Fullname</label>
+        <input type="text" class="form-control" id="username" name="username" value="{{ username }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{ email }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" value="{{ password }}" required>
+        <p class="text-muted small fst-italic">
+            Password should be api password than regular password<br/>
+            If you want to actually mail. Click this link and follow video till 2:30, for the password<br/>
+            <a href="https://www.youtube.com/watch?v=kTcmbZqNiGw" target="_blank">Video: How to get api password</a>
+        </p>
+    </div>
+    <div class="mb-3">
+        <label for="cv_location" class="form-label">CV Path</label>
+        <input type="text" class="form-control" id="cv_location" name="cv_location" value="{{ cv_location }}" required>
+        <p class="text-muted small fst-italic">
+            Click <a href="#CV_upload">here</a> to upload your CV.<br/>
+            It is in bottom of this page.
+        </p>
+    </div>
+    <div class="mb-3">
+        <label for="university" class="form-label">University</label>
+        <input type="text" class="form-control" id="university" name="university" value="{{ university }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="department" class="form-label">Target Department</label>
+        <input type="text" class="form-control" id="department" name="department" value="{{ department }}">
+        <p class="text-muted small fst-italic">Eg: Masters/Phd. in Some Engineering</p>
+    </div>
+    <div class="mb-3">
+        <label for="footer" class="form-label">Footer</label>
+        <textarea class="form-control" id="footer" name="footer" rows="3">{{ footer }}</textarea>
+        <p class="text-muted small fst-italic">
+            This is added to end of email<br/>
+            Place to add your scores. It will be used when you send mail.
+        </p>
+    </div>
+
+    <button type="submit" class="btn btn-primary" name="action" value="SaveInfo">Save And Continue</button>
+</form>
+<br/>
+<h2>Load saved user Information</h2>
+<p>Loads user information from config file</p>
+<p class="text-muted small fst-italic">Skip this.</p>
+<form method="POST">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" value="" required>
+    </div>
+    <button type="submit" class="btn btn-primary" name="action" value="LoadInfo">Load</button>
+</form>
+<br/>
+<h2 id="CV_upload">Upload CV</h2>
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="cv_file" class="form-label">Upload CV</label>
+        <input type="file" class="form-control" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx" required>
+        <p class="text-muted small fst-italic">Accepted formats: PDF, DOC, DOCX</p>
+    </div>
+    <button type="submit" class="btn btn-primary" name="action" value="UploadCV">Upload CV</button>
+</form>
+{% endblock %}

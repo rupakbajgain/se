@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Professor Information</h1>
+<form method="POST">
+    <div class="mb-3">
+        <label for="prof_name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="prof_name" name="prof_name" value="{{ prof_name }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="prof_email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="prof_email" name="prof_email" value="{{ prof_email }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="prof_profile" class="form-label">Profile Page</label>
+        <input type="url" class="form-control" id="prof_profile" name="prof_profile" value="{{ prof_profile }}">
+        <p class="text-muted small fst-italic">Optional</p>
+    </div>
+    <div class="mb-3">
+        <label for="prof_university" class="form-label">University</label>
+        <input type="text" class="form-control" id="prof_university" name="prof_university" value="{{ prof_university }}">
+        <p class="text-muted small fst-italic">Optional</p>
+    </div>
+    {% if prof_index %}
+    <div class="mb-3">
+        <label for="prof_index" class="form-label">Index</label>
+        <input class="form-control" id="prof_index" name="prof_index" value="{{ prof_index }}" readonly style="background-color: #f8f9fa;">
+        <p class="text-muted small fst-italic">Optional</p>
+    </div>
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Save And Continue</button>
+    <a href="{{ url_for('nextprof') }}" class="btn btn-secondary">Load Next Professor</a>
+</form>
+<br/>
+
+
+<a href="{{ url_for('clearprof') }}" class="btn btn-danger">Clear Professor Infos</a>
+
+<script>
+    document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('paste', event => {
+            event.preventDefault();
+            const text = (event.clipboardData || window.clipboardData).getData('text');
+            input.value = text.trim();
+        });
+    });
+</script>
+
+{% endblock %}

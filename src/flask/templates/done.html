@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Email sent</h1>
+<p>Selection option form below what you want to do next</p>
+
+<a href="{{ url_for('clearprof') }}" class="btn btn-primary">Mail to next professor</a>
+<p class="text-muted small fst-italic">Click here to continue with next professor, it clears all the data except university name</p>
+{% endblock %}

@@ -1,0 +1,32 @@
+#create venv in venv directory here
+# cleanup 1st ; make directories, cleans cache later
+./main clean
+
+# run main
+./main run
+                   run is optional, can pass --user
+
+#create lib(*dev)
+./main.py createlib name11
+
+#testing(*dev)
+./main test
+                  optional argument name
+
+# List all unis
+./main.py listuni
+
+# Get 2nd professor from berkley
+./main.py listprofs berkeley | sed -n 2p
+
+# create test datas
+./main.py listprofs berkeley | sed -n 2p > ./src/scholar/tests/in.json 
+
+#or scholar
+./main.py listprofs berkeley | sed -n 2p | ./main.py scholar
+
+#convent to doc string
+ | ./main.py todocs
+
+ for geminai api:
+ https://makersuite.google.com/app/apikey

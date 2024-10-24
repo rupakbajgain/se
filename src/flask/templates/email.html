@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Email</h1>
+
+<form method="POST">
+    <button type="submit" class="btn btn-primary" name="action" value="CreateMail">Generate Mail</button>
+</form>
+<p class="text-muted small fst-italic">
+    Dont write anything, Click generate mail, do editing and finally send mail<br/>
+    Can click generate mail multiple times to get different templates.
+</p>
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="email_subject" class="form-label">Subject</label>
+        <input type="text" class="form-control" id="email_subject" name="email_subject" value="{{ mail_subject }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="email_body" class="form-label">Body</label>
+        <textarea class="form-control" id="email_body" name="email_body" rows="20" style="height: 40vh;" required>{{ mail_body }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-success" name="action" value="SendMail">Send Mail</button>
+</form>
+
+{% endblock %}
